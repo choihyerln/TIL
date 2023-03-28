@@ -1,6 +1,6 @@
 package codingTest;
 
-public class Q8 {
+public class Q1008 {
 
 	public static void main(String[] args) {
 		System.out.println("\u250C\u252C\u2510");
