@@ -1,31 +1,42 @@
 package codingTest;
 
+import java.util.Scanner;
+
 public class Q1097 {
 	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		
-		String number = "12156";
-    	
-        int[] numPad = {1,2,3,4,5,6,7,8,9,0};
-        int count = 0;
-        int index = 0;
-        
-        for (int i = 0; i < number.length(); i++) {
-            int current = number.charAt(i) - '0'; // char to int 변환
-            
-            // 인덱스 계산
-            int left = index - current;
-            int right = index + current;
-            
-            // 더 적은 버튼 수로 이동
-            if (left >= 0 && (right >= numPad.length || numPad[left] < numPad[right])) {
-                count += left - index;
-                index = left;
-            } else if (right < numPad.length) {
-                count += right - index;
-                index = right;
-            }
-        }
-        System.out.println(count);
+		int[][] arr = new int[19][19];
+		
+		for (int i=0; i<arr.length; i++) {
+			for (int j=0; j<arr.length; j++) 
+				arr[i][j] = sc.nextInt();
+		}
+		
+		int n = sc.nextInt();
+		for (int a=0; a<n; a++) {
+			int x = sc.nextInt()-1;
+			int y = sc.nextInt()-1;
+			
+			for (int i=0; i<arr.length; i++) {
+				if (arr[x][i]==0)
+					arr[x][i] = 1;
+				else arr[x][i] = 0;
+			}
+			
+			for (int j=0; j<arr.length; j++) {
+				if (arr[j][y]==0)
+					arr[j][y] = 1;
+				else arr[j][y] = 0;
+			}
+		}
+		
+		for (int i=0; i<arr.length; i++) {
+			for (int j=0; j>arr.length; j++) {
+				System.out.print(arr[i][j] + "");
+			}
+			System.out.println();
+		}
     }
 }
